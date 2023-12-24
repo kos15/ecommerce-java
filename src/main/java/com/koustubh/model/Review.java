@@ -12,7 +12,6 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "product")
     @ManyToOne
     @JoinColumn(name = "product_id")
     @JsonIgnore

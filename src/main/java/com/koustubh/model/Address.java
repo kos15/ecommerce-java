@@ -1,13 +1,13 @@
 package com.koustubh.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class Address {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
