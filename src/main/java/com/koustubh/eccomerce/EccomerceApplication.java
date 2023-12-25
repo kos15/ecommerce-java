@@ -4,10 +4,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @EnableConfigurationProperties
-@EntityScan(basePackages = "com.koustubh.model")
+//@ComponentScan(basePackages = {"com.koustubh.configs","com.koustubh.controller", "com.koustubh.service", "com.koustubh.repository"})
+//@EntityScan(basePackages = "com.koustubh.model")
 public class EccomerceApplication {
 
 	public static void main(String[] args) {
