@@ -2,10 +2,12 @@ package com.koustubh.eccomerce.controller;
 
 import com.koustubh.eccomerce.configs.JwtProvider;
 import com.koustubh.eccomerce.exception.UserException;
+import com.koustubh.eccomerce.model.Cart;
 import com.koustubh.eccomerce.model.User;
 import com.koustubh.eccomerce.repository.UserRepository;
 import com.koustubh.eccomerce.request.LoginRequest;
 import com.koustubh.eccomerce.response.AuthResponse;
+import com.koustubh.eccomerce.service.CartService;
 import com.koustubh.eccomerce.service.CustomUserServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,6 +36,8 @@ public class AuthController {
     private PasswordEncoder passwordEncoder;
     @Autowired
     private CustomUserServiceImplementation customUserServiceImplementation;
+    @Autowired
+    private CartService cartService;
 
     public AuthController(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -62,6 +66,9 @@ public class AuthController {
 
         // save user into database
         User savedUser = userRepository.save(createNewUser);
+
+        // create cart for newly created user
+        Cart cart = cartService.createCart(savedUser);
 
         // Create new users authentication object and set into security context
         Authentication authentication = new UsernamePasswordAuthenticationToken(savedUser.getEmail(), savedUser.getPassword());

@@ -12,5 +12,5 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
     @Query("SELECT c FROM Category c " +
             "WHERE c.name = :name AND c.parentCategory = :parentCategoryName"
     )
-    public Category findByNameAndParent(@Param("name") String name, @Param("parentCategoryName") String parent);
+    public Category findByNameAndParent(@Param("name") String name, @Param("parentCategoryName") Category parent);
 }
