@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "order_items")
 public class OrderItem {
 
     @Id
@@ -13,6 +14,7 @@ public class OrderItem {
     private Long id;
     @JsonIgnore
     @ManyToOne
+    @JoinColumn(name = "order_id")
     private Order order;
     @ManyToOne
     private Product product;

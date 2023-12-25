@@ -21,6 +21,7 @@ public class OrderServiceImplementation implements OrderService{
     private ProductService productService;
     @Override
     public Order createOrder(User user, Address shippingAddress) throws OrderException {
+        Order order = new Order();
         return null;
     }
 

@@ -12,6 +12,7 @@ public class CartItem {
     @ManyToOne
     @JsonIgnore
     private Cart cart;
+    @OneToOne(fetch = FetchType.LAZY)
     private Product product;
     private String size;
     private int quantity;

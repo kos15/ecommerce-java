@@ -107,6 +107,16 @@ public class ProductServiceImplementation implements ProductService{
     }
 
     @Override
+    public List<Product> findAllProducts() throws ProductException {
+        List<Product> products = productRepository.findAll();
+        if(products.isEmpty()){
+            throw new ProductException("No Products available..!");
+        }
+        return products;
+    }
+
+
+    @Override
     public Page<Product> getAllProduct(String category, List<String> color, List<String> size, Integer minPrice, Integer maxPrice, Integer minDiscount, String sort, String stock, Integer pageNumber, Integer pageSize) throws ProductException {
         Pageable pageable = PageRequest.of(pageNumber, pageSize);
         List<Product> products = productRepository.filterProduct(category,minPrice,maxPrice, minDiscount,sort);
